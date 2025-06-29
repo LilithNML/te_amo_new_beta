@@ -27,6 +27,9 @@ let failedAttempts = parseInt(localStorage.getItem("failedAttempts") || "0", 10)
 const MAX_FAILED_ATTEMPTS = 5;
 const HINT_MESSAGE = "Parece que estás teniendo problemas. Aquí tienes una pista general: ¡Muchos códigos están relacionados con nuestros juegos, recuerdos o fechas especiales! Prueba con palabras clave.";
 
+// Nuevo estado para controlar si la música de fondo fue pausada automáticamente por un audio/video
+let bgMusicWasAutoPaused = false;
+
 // Logros (Gamificación)
 const achievements = [{
   id: "first_unlock",
@@ -161,8 +164,8 @@ function checkCode() {
   }
 
   const data = mensajes[code];
-  const isBgMusicPlaying = !bgMusic.paused;
-  const isBgMusicManuallyPaused = musicToggleBtn.classList.contains('paused');
+  const isBgMusicPlayingBefore = !bgMusic.paused;
+  const isBgMusicManuallyPaused = musicToggleBtn.classList.contains('paused'); // El usuario ha pausado la música manualmente
 
   if (data) {
     let desbloqueados = JSON.parse(localStorage.getItem("desbloqueados") || "[]");
@@ -171,7 +174,6 @@ function checkCode() {
     failedAttempts = 0;
     localStorage.setItem("failedAttempts", "0");
     progresoParrafo.textContent = `Has desbloqueado ${desbloqueados.length} de ${Object.keys(mensajes).length} mensajes secretos.`;
-
 
     // Añadir el código si no estaba desbloqueado
     if (!desbloqueados.includes(code)) {
@@ -193,10 +195,35 @@ function checkCode() {
         html += `<p>${data.texto}</p>`;
       }
 
+      // Manejar audios de código con fade out/in de música de fondo
+      if (data.audio) {
+        if (isBgMusicPlayingBefore && !isBgMusicManuallyPaused) { // Pausar con fadeOut solo si la música de fondo está sonando y no fue pausada manualmente
+          fadeOutAudio(bgMusic, 800).then(() => {
+            playCodeAudio(data.audio);
+          });
+          bgMusicWasAutoPaused = true;
+        } else {
+          playCodeAudio(data.audio);
+          bgMusicWasAutoPaused = false; // No fue auto-pausada en este caso
+        }
+      }
       // Manejar videos incrustados
-      if (data.videoEmbed) {
+      else if (data.videoEmbed) {
+        // Pausar música de fondo para el video, no se reanuda automáticamente por las limitaciones del iframe
+        if (isBgMusicPlayingBefore && !isBgMusicManuallyPaused) {
+          fadeOutAudio(bgMusic, 800);
+          bgMusicWasAutoPaused = true;
+        } else {
+          bgMusicWasAutoPaused = false; // No fue auto-pausada en este caso
+        }
         html += `<div class="video-container"><iframe src="${data.videoEmbed}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Contenido de video desbloqueado"></iframe></div>`;
       }
+      // Si no hay audio ni video, y la música de fondo fue auto-pausada previamente, reanudarla
+      else if (bgMusic.paused && bgMusicWasAutoPaused && !isBgMusicManuallyPaused) {
+        fadeInAudio(bgMusic, 1000, 0.5);
+        bgMusicWasAutoPaused = false; // Ya se reanudó, restablecer la bandera
+      }
+
 
       // Manejar enlaces externos
       if (data.link) {
@@ -214,21 +241,6 @@ function checkCode() {
         // No agregamos HTML aquí, ya que se muestra en un modal.
       }
 
-      // Manejar audios de código con fade out/in de música de fondo
-      if (data.audio) {
-        if (isBgMusicPlaying && !isBgMusicManuallyPaused) { // Pausar con fadeOut solo si la música de fondo está sonando y no fue pausada manualmente
-          fadeOutAudio(bgMusic, 800).then(() => {
-            playCodeAudio(data.audio, isBgMusicManuallyPaused);
-          });
-        } else {
-          playCodeAudio(data.audio, isBgMusicManuallyPaused);
-        }
-      } else {
-        // Si no hay audio de código y la música de fondo fue pausada por un audio anterior, reanudarla.
-        if (bgMusic.paused && !isBgMusicManuallyPaused) {
-          fadeInAudio(bgMusic, 1000, 0.5); // Reanudar con fade-in si no fue pausada manualmente
-        }
-      }
     }
 
     contenidoDiv.innerHTML = html;
@@ -240,6 +252,13 @@ function checkCode() {
     applyInputFeedback(false); // Feedback de error
     failedAttempts++;
     localStorage.setItem("failedAttempts", failedAttempts.toString());
+
+    // Si no es un código válido y la música fue auto-pausada previamente, reanudarla
+    if (bgMusic.paused && bgMusicWasAutoPaused && !isBgMusicManuallyPaused) {
+      fadeInAudio(bgMusic, 1000, 0.5);
+      bgMusicWasAutoPaused = false;
+    }
+
 
     if (failedAttempts >= MAX_FAILED_ATTEMPTS) {
       contenidoDiv.innerHTML = `<p style='color: var(--error-color);'>Código no válido. Intenta con otro.</p><p style='color: var(--progress-color);'>${HINT_MESSAGE}</p>`;
@@ -258,17 +277,19 @@ function checkCode() {
 /**
  * Reproduce el audio del código y maneja la reanudación de la música de fondo.
  * @param {string} audioSrc La URL del audio del código.
- * @param {boolean} wasBgMusicManuallyPaused Si la música de fondo estaba pausada manualmente.
  */
-function playCodeAudio(audioSrc, wasBgMusicManuallyPaused) {
+function playCodeAudio(audioSrc) {
   if (codeAudio.src !== audioSrc) {
     codeAudio.src = audioSrc;
   }
   codeAudio.play().catch(e => console.error("Error al reproducir audio del código:", e));
 
+  // Al finalizar el audio del código, reanudar la música de fondo si fue auto-pausada
   codeAudio.onended = () => {
-    if (!wasBgMusicManuallyPaused) { // Reanudar solo si la música de fondo no fue pausada manualmente
+    // Solo reanudar si fue pausada por un audio/video Y el usuario NO la ha pausado manualmente
+    if (bgMusicWasAutoPaused && !musicToggleBtn.classList.contains('paused')) {
       fadeInAudio(bgMusic, 1000, 0.5); // Fundido de entrada al reanudar
+      bgMusicWasAutoPaused = false; // Restablecer la bandera
     }
   };
 }
@@ -285,6 +306,9 @@ function actualizarProgreso() {
  * Gestiona la reproducción/pausa de la música de fondo.
  */
 function toggleMusic() {
+  // Si el usuario presiona el botón, siempre debe anular el estado de auto-pausado.
+  bgMusicWasAutoPaused = false;
+
   if (bgMusic.paused) {
     fadeInAudio(bgMusic, 1500, 0.5).then(() => { // Usar fade-in al reproducir
       musicToggleIcon.classList.replace('fa-volume-mute', 'fa-volume-up');
@@ -475,8 +499,8 @@ window.addEventListener("load", () => {
 // Control de audio cuando la visibilidad de la pestaña cambia
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "visible") {
-    // Si la música de fondo estaba sonando y no está pausada manualmente, y el audio de código está pausado
-    if (bgMusic.paused && codeAudio.paused && !musicToggleBtn.classList.contains('paused')) {
+    // Si la música de fondo estaba pausada (y no por el usuario) Y no hay audio de código sonando
+    if (bgMusic.paused && !musicToggleBtn.classList.contains('paused') && codeAudio.paused) {
       fadeInAudio(bgMusic, 1000, 0.5); // Reanudar con fade-in
     }
   } else {
