@@ -25,15 +25,19 @@ const menuButton = document.getElementById('menuButton');
 const dropdownMenu = document.getElementById('dropdownMenu');
 const achievementToastContainer = document.getElementById('achievement-toast-container');
 const darkModeToggle = document.getElementById('darkModeToggle'); // Nuevo elemento
+const showFavoritesBtn = document.getElementById('showFavoritesBtn'); // Nuevo: botón del menú para favoritos
+const filterFavoritesBtn = document.getElementById('filterFavoritesBtn'); // Nuevo: botón de filtro de favoritos
 
 // Variables de estado
 let failedAttempts = parseInt(localStorage.getItem("failedAttempts") || "0", 10);
 const MAX_FAILED_ATTEMPTS = 5;
 const HINT_MESSAGE = "Parece que no es el código correcto... te daré una pista si fallas más veces.";
+let showingFavorites = false; // Nuevo: estado para saber si estamos mostrando solo favoritos
 
-// Recuperar códigos desbloqueados y logros de localStorage
+// Recuperar códigos desbloqueados, logros y favoritos de localStorage
 let desbloqueados = new Set(JSON.parse(localStorage.getItem("desbloqueados") || "[]"));
 let logrosAlcanzados = new Set(JSON.parse(localStorage.getItem("logrosAlcanzados") || "[]"));
+let favoritos = new Set(JSON.parse(localStorage.getItem("favoritos") || "[]")); // Nuevo: Conjunto de códigos favoritos
 
 // --- Funciones de Utilidad ---
 
@@ -54,6 +58,11 @@ function guardarDesbloqueados() {
 // Guarda el estado actual de los logros alcanzados en localStorage
 function guardarLogrosAlcanzados() {
   localStorage.setItem("logrosAlcanzados", JSON.stringify(Array.from(logrosAlcanzados)));
+}
+
+// Nuevo: Guarda el estado actual de los favoritos en localStorage
+function guardarFavoritos() {
+  localStorage.setItem("favoritos", JSON.stringify(Array.from(favoritos)));
 }
 
 // Muestra un toast de logro
@@ -89,6 +98,20 @@ function actualizarProgreso() {
   });
 }
 
+// Nuevo: Función para alternar el estado de favorito de un código
+function toggleFavorite(codigo) {
+  if (favoritos.has(codigo)) {
+    favoritos.delete(codigo);
+    showAchievementToast(`"${codigo}" eliminado de favoritos.`);
+  } else {
+    favoritos.add(codigo);
+    showAchievementToast(`"${codigo}" añadido a favoritos.`);
+  }
+  guardarFavoritos();
+  actualizarListaDesbloqueados(); // Vuelve a renderizar la lista para reflejar el cambio
+}
+
+
 // Actualiza la lista de códigos desbloqueados y los filtros
 function actualizarListaDesbloqueados() {
   unlockedCodesList.innerHTML = "";
@@ -98,7 +121,9 @@ function actualizarListaDesbloqueados() {
   const categoriasUnicas = new Set();
   categoriasUnicas.add(""); // Opción predeterminada
 
-  Array.from(desbloqueados)
+  const codigosParaMostrar = showingFavorites ? Array.from(favoritos) : Array.from(desbloqueados);
+
+  codigosParaMostrar
     .sort() // Ordenar alfabéticamente los códigos
     .forEach(codigo => {
       const mensaje = mensajes[codigo];
@@ -108,14 +133,32 @@ function actualizarListaDesbloqueados() {
         const normalizedCategoria = normalizarTexto(mensaje.categoria || "Sin Categoría");
         const normalizedCodigo = normalizarTexto(codigo);
 
-        if (
-          (selectedCategory === "" || normalizedCategoria === normalizarTexto(selectedCategory)) &&
-          (searchTerm === "" || normalizedCodigo.includes(searchTerm))
-        ) {
+        // Aplica filtros de búsqueda, categoría y si se están mostrando solo favoritos
+        const matchesSearch = searchTerm === "" || normalizedCodigo.includes(searchTerm);
+        const matchesCategory = selectedCategory === "" || normalizedCategoria === normalizarTexto(selectedCategory);
+        const isFavorite = favoritos.has(codigo);
+
+        if (matchesSearch && matchesCategory) {
           const li = document.createElement("li");
           li.innerHTML = `<span>${codigo}</span> <span class="category">${mensaje.categoria || "Genérico"}</span>`;
           li.setAttribute("tabindex", "0"); // Hacer los ítems de la lista enfocables
           li.setAttribute("aria-label", `Código desbloqueado: ${codigo}, categoría ${mensaje.categoria || "Genérico"}`);
+          
+          // Añadir el botón de favorito
+          const favoriteBtn = document.createElement("button");
+          favoriteBtn.classList.add("favorite-toggle-btn");
+          favoriteBtn.innerHTML = `<i class="${isFavorite ? 'fas' : 'far'} fa-heart"></i>`;
+          favoriteBtn.setAttribute("aria-label", isFavorite ? `Quitar ${codigo} de favoritos` : `Añadir ${codigo} a favoritos`);
+          if (isFavorite) {
+            favoriteBtn.classList.add('active');
+          }
+          favoriteBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Evitar que el clic en el botón active el li
+            toggleFavorite(codigo);
+          });
+          li.appendChild(favoriteBtn);
+
+
           // Añadir evento click para mostrar el contenido si es un código ya desbloqueado
           li.addEventListener('click', () => mostrarContenido(codigo));
           unlockedCodesList.appendChild(li);
@@ -294,9 +337,12 @@ function procesarCodigo() {
       desbloqueados.add(codigo);
       guardarDesbloqueados();
       actualizarProgreso();
-      actualizarListaDesbloqueados();
       showAchievementToast(`¡Código desbloqueado: ${codigo}!`); // Mensaje específico para nuevo código
     }
+    // Siempre actualizar la lista de desbloqueados, incluso si ya estaba
+    // para asegurar que el icono de favorito se muestra si se ha añadido recientemente.
+    actualizarListaDesbloqueados(); 
+
     failedAttempts = 0; // Resetear intentos fallidos al tener éxito
     localStorage.setItem("failedAttempts", "0");
   } else {
@@ -361,7 +407,34 @@ function toggleUnlockedCodes() {
   unlockedCodesPanel.hidden = !isHidden;
   toggleUnlockedCodesBtn.setAttribute("aria-expanded", !isHidden);
   toggleUnlockedCodesBtn.textContent = isHidden ? "Ocultar Códigos Desbloqueados" : "Mostrar Códigos Desbloqueados";
+  
+  // Resetear el filtro de favoritos al abrir/cerrar el panel general
+  showingFavorites = false;
+  filterFavoritesBtn.classList.remove('active');
+  filterFavoritesBtn.setAttribute('aria-pressed', 'false');
+  actualizarListaDesbloqueados(); // Asegura que la lista se refresque con todos los códigos
 }
+
+// Nuevo: Listener para el botón "Mostrar Códigos Favoritos" del menú
+showFavoritesBtn.addEventListener('click', (e) => {
+  e.preventDefault(); // Evitar navegación si es un <a>
+  toggleUnlockedCodes(); // Abre el panel de desbloqueados si está cerrado
+  showingFavorites = true; // Establece el estado para mostrar solo favoritos
+  filterFavoritesBtn.classList.add('active'); // Marca el botón de filtro de favoritos como activo
+  filterFavoritesBtn.setAttribute('aria-pressed', 'true');
+  searchUnlockedCodesInput.value = ''; // Limpiar búsqueda
+  categoryFilterSelect.value = ''; // Limpiar categoría
+  actualizarListaDesbloqueados(); // Refresca la lista con solo favoritos
+  cerrarMenu(); // Cierra el menú desplegable
+});
+
+// Nuevo: Listener para el botón de filtro "Solo Favoritos" dentro del panel de códigos
+filterFavoritesBtn.addEventListener('click', () => {
+  showingFavorites = !showingFavorites; // Alternar estado
+  filterFavoritesBtn.classList.toggle('active', showingFavorites); // Toggle clase 'active'
+  filterFavoritesBtn.setAttribute('aria-pressed', showingFavorites); // Actualiza aria-pressed
+  actualizarListaDesbloqueados(); // Refresca la lista
+});
 
 // Filtros de búsqueda y categoría
 searchUnlockedCodesInput.addEventListener("input", actualizarListaDesbloqueados);
