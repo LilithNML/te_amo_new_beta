@@ -16,6 +16,15 @@ const mensajes = {
     categoria: "Carta",
     pista: "Un héroe muy fuerte de Dragon Ball."
   },
+  "brawl": {
+    descarga: {
+      url: "assets/images/mi_diario.webp", // URL del archivo para descarga (puede ser imagen, PDF, etc.)
+      nombre: "MiDiario.webp", // Nombre del archivo al descargar
+      textoEnlace: "Descargar mi diario secreto" // Texto que se muestra en el enlace
+    },
+    categoria: "Descarga",
+    pista: "Otro juego que compartimos."
+  },
   "kissme": {
     texto: "Aunque todavía no he sentido tus labios sobre los míos, hay algo en la idea de ese beso que me llena el alma. Es curioso cómo puedo extrañar algo que aún no conozco, cómo puedo desear tanto ese instante sin haberlo vivido. Pero lo imagino… lo siento en el aire, en el espacio que nos separa. Un beso suave, tierno, que lo diga todo sin decir nada. Un beso que selle la promesa de un futuro juntos. Estoy impaciente por el día en que ese deseo se haga realidad y pueda descubrir la magia de tus labios. Será un momento inolvidable, lo sé.",
     categoria: "Texto",
