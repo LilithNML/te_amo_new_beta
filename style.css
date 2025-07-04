@@ -27,6 +27,8 @@
   --achievement-bg: #4A4A6A; /* Fondo del toast de logro */
   --achievement-text: #E0CFC1; /* Texto del toast de logro */
   --modal-bg: rgba(0, 0, 0, 0.8); /* Fondo del modal */
+  --favorite-icon-default: #ccc; /* Icono de favorito inactivo */
+  --favorite-icon-active: #FFD700; /* Icono de favorito activo (oro) */
 }
 
 /* Variables para el Modo Oscuro */
@@ -51,6 +53,8 @@ body.dark-mode {
   --achievement-bg: #2C2C2C;
   --achievement-text: #E0CFC1;
   --modal-bg: rgba(0, 0, 0, 0.9);
+  --favorite-icon-default: #888;
+  --favorite-icon-active: #FFC107;
 }
 
 /* Estilos globales y reseteos */
@@ -186,6 +190,11 @@ h1 {
 .button:active {
   transform: translateY(0);
   box-shadow: none;
+}
+
+.button.small-button { /* Para botones más pequeños como "Solo Favoritos" */
+  padding: 10px 15px;
+  font-size: 0.95em;
 }
 
 /* Estados de validación del input */
@@ -328,7 +337,8 @@ h1 {
 }
 
 .filter-controls input[type="text"],
-.filter-controls select {
+.filter-controls select,
+.filter-controls .button.small-button { /* Añadido el botón small-button */
   padding: 10px 15px;
   border: 1px solid var(--border-color-input);
   border-radius: 8px;
@@ -341,10 +351,22 @@ h1 {
 }
 
 .filter-controls input[type="text"]:focus,
-.filter-controls select:focus {
+.filter-controls select:focus,
+.filter-controls .button.small-button:focus {
   border-color: var(--highlight-pink);
   outline: none; /* Se maneja con :focus-visible */
 }
+
+/* Estilo para el botón de favoritos cuando está activado */
+#filterFavoritesBtn[aria-pressed="true"] {
+  background-color: var(--highlight-pink);
+  color: white;
+}
+
+#filterFavoritesBtn[aria-pressed="true"] .fa-heart {
+  color: var(--favorite-icon-active); /* Para el corazón en sí */
+}
+
 
 .lista-codigos {
   list-style: none;
@@ -367,6 +389,7 @@ h1 {
   font-size: 0.95em;
   transition: background-color 0.2s ease, transform 0.2s ease;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: relative; /* Para posicionar el icono de favorito */
 }
 
 .lista-codigos li:hover {
@@ -382,6 +405,30 @@ h1 {
   border-radius: 5px;
   margin-left: 10px;
 }
+
+/* Icono de favorito dentro de la lista de códigos */
+.favorite-toggle-btn {
+  background: none;
+  border: none;
+  color: var(--favorite-icon-default);
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+  padding: 5px; /* Área de clic más grande */
+}
+
+.favorite-toggle-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Estilo para icono de favorito activado */
+.favorite-toggle-btn.active .fas { /* Usamos fas para el corazón relleno */
+  color: var(--favorite-icon-active);
+}
+.favorite-toggle-btn .far { /* Usamos far para el corazón vacío */
+  color: var(--favorite-icon-default);
+}
+
 
 /* Botón de música */
 .music-toggle {
@@ -679,7 +726,8 @@ select:focus-visible {
   }
 
   .filter-controls input[type="text"],
-  .filter-controls select {
+  .filter-controls select,
+  .filter-controls .button.small-button { /* También el botón de favoritos */
     width: 100%; /* Ocupan todo el ancho */
     max-width: none;
   }
