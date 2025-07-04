@@ -37,6 +37,9 @@
       <nav id="dropdownMenu" class="dropdown-menu" aria-hidden="true">
         <a href="#home" onclick="cerrarMenu()">Inicio</a>
         <a href="#unlocked-section" onclick="toggleUnlockedCodes()" aria-label="Ver códigos desbloqueados">Códigos Desbloqueados</a>
+        <button id="showFavoritesBtn" class="dropdown-item" aria-label="Mostrar códigos favoritos">
+          <i class="fas fa-heart"></i> Códigos Favoritos
+        </button>
         <button id="darkModeToggle" class="dropdown-item" aria-label="Alternar modo oscuro/claro">
           <i class="fas fa-moon"></i> Modo Oscuro
         </button>
@@ -79,6 +82,9 @@
           <select id="categoryFilter" aria-label="Filtrar por categoría">
             <option value="">Todas las categorías</option>
             </select>
+          <button id="filterFavoritesBtn" class="button small-button" aria-pressed="false" aria-label="Filtrar por favoritos">
+            <i class="far fa-heart"></i> Solo Favoritos
+          </button>
         </div>
         <ul id="unlockedCodesList" class="lista-codigos"></ul>
       </div>
