@@ -41,7 +41,7 @@ const mensajes = {
   },
   "miprimercodigo": {
     texto: "¡Felicidades! Has desbloqueado tu primer código secreto. Este es solo el comienzo de nuestra aventura de mensajes y sorpresas. Hay muchos más esperándote.",
-    categoria: "Intro",
+    categoria: "Pollo",
     pista: "Piensa en el principio de todo."
   },
   "corazondeoro": {
