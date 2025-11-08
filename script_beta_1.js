@@ -356,10 +356,11 @@ function procesarCodigo() {
   const codigo = normalizarTexto(codeInput.value);
   const mensaje = mensajes[codigo];
 
-  contenidoDiv.hidden = true; // Ocultar contenido anterior
-  codeInput.classList.remove("success", "error"); // Limpiar estados visuales
+  contenidoDiv.hidden = true;
+  codeInput.classList.remove("success", "error");
 
   if (mensaje) {
+    // --- Código correcto ---
     correctSound.play().catch(e => console.error("Error al reproducir sonido correcto:", e));
     codeInput.classList.add("success");
     mostrarContenido(codigo);
@@ -368,29 +369,62 @@ function procesarCodigo() {
       desbloqueados.add(codigo);
       guardarDesbloqueados();
       actualizarProgreso();
-      showAchievementToast(`¡Código desbloqueado: ${codigo}!`); // Mensaje específico para nuevo código
+      showAchievementToast(`¡Código desbloqueado: ${codigo}! 🎉`);
     }
-    // Siempre actualizar la lista de desbloqueados, incluso si ya estaba
-    // para asegurar que el icono de favorito se muestra si se ha añadido recientemente.
-    actualizarListaDesbloqueados(); 
 
-    failedAttempts = 0; // Resetear intentos fallidos al tener éxito
+    actualizarListaDesbloqueados();
+    failedAttempts = 0;
     localStorage.setItem("failedAttempts", "0");
   } else {
+    // --- Código incorrecto ---
     incorrectSound.play().catch(e => console.error("Error al reproducir sonido incorrecto:", e));
     codeInput.classList.add("error");
     failedAttempts++;
     localStorage.setItem("failedAttempts", failedAttempts.toString());
 
+    // Si alcanza el número máximo de intentos fallidos → mostrar pista aleatoria
     if (failedAttempts >= MAX_FAILED_ATTEMPTS) {
-      contenidoDiv.innerHTML = `<h2>Pista:</h2><p>${HINT_MESSAGE}</p>`;
+      // Obtener todos los códigos aún no desbloqueados con pista
+      let codigosNoDesbloqueados = Object.keys(mensajes).filter(codigo =>
+        !desbloqueados.has(codigo) && mensajes[codigo].pista
+      );
+
+      let pistaMostrar = HINT_MESSAGE;
+      let ultimoCodigoPista = localStorage.getItem("ultimoCodigoPista");
+
+      if (codigosNoDesbloqueados.length > 0) {
+        // Evitar repetir la última pista
+        if (codigosNoDesbloqueados.length > 1 && ultimoCodigoPista) {
+          codigosNoDesbloqueados = codigosNoDesbloqueados.filter(c => c !== ultimoCodigoPista);
+        }
+
+        const codigoAleatorio = codigosNoDesbloqueados[Math.floor(Math.random() * codigosNoDesbloqueados.length)];
+        pistaMostrar = mensajes[codigoAleatorio].pista;
+        localStorage.setItem("ultimoCodigoPista", codigoAleatorio);
+      }
+
+      contenidoDiv.innerHTML = `
+        <h2>💡 Pista para ti:</h2>
+        <p>${pistaMostrar}</p>
+        <p class="note">(Intenta pensar qué código podría relacionarse con eso...)</p>
+      `;
       contenidoDiv.hidden = false;
+
+      // Reiniciar los intentos fallidos tras mostrar una pista
+      failedAttempts = 0;
+      localStorage.setItem("failedAttempts", "0");
     } else {
-      contenidoDiv.innerHTML = `<h2>Código Incorrecto</h2><p>Inténtalo de nuevo. Intentos fallidos: ${failedAttempts}</p>`;
+      // Mensaje de error con contador
+      contenidoDiv.innerHTML = `
+        <h2>Código Incorrecto ❌</h2>
+        <p>Intentos fallidos: ${failedAttempts} de ${MAX_FAILED_ATTEMPTS}</p>
+        <p>Sigue intentando, quizás una pista aparezca pronto...</p>
+      `;
       contenidoDiv.hidden = false;
     }
   }
-  codeInput.value = ""; // Limpiar el input después de cada intento
+
+  codeInput.value = "";
 }
 
 // Inicialización de la música de fondo
