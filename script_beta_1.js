@@ -195,8 +195,39 @@ function mostrarContenido(codigo) {
   let contentHTML = "";
 
   if (mensaje.videoEmbed) {
-    contentHTML += `<h2>Video Especial</h2><p>¡Disfruta de este momento!</p>`;
-    contentHTML += `<iframe src="${mensaje.videoEmbed}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Video especial para ti"></iframe>`;
+  contentHTML += `
+    <h2>Video Especial</h2>
+    <p>${mensaje.texto || '¡Disfruta de este momento!'}</p>
+    <iframe 
+      src="${mensaje.videoEmbed}" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen 
+      title="Video especial para ti"
+    ></iframe>
+  `;
+
+  if (bgMusic && !bgMusic.paused) {
+    bgMusic.pause();
+    contentHTML += `
+      <button id="resumeMusicBtn" class="button small-button">
+        <i class="fas fa-music"></i> Reanudar Música de Fondo
+      </button>
+    `;
+    setTimeout(() => {
+      const resumeBtn = document.getElementById('resumeMusicBtn');
+      if (resumeBtn) {
+        resumeBtn.addEventListener('click', () => {
+          bgMusic.play().catch(e => console.error("Error al reanudar la música:", e));
+          musicToggleIcon.classList.add('fa-volume-up');
+          musicToggleIcon.classList.remove('fa-volume-mute');
+          musicToggleBtn.classList.add('playing');
+          resumeBtn.remove();
+        });
+      }
+    }, 100);
+  }
+  }
     if (bgMusic && !bgMusic.paused) {
       bgMusic.pause();
       // Opcional: Proporcionar un botón para reanudar la música de fondo después del video
