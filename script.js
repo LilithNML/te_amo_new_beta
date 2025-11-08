@@ -193,11 +193,7 @@ function mostrarContenido(codigo) {
   contenidoDiv.classList.add('fade-in'); // Re-add animation
 
   let contentHTML = "";
-
-  if (mensaje.videoEmbed) {
-    contentHTML += `<h2>Video Especial</h2><p>¡Disfruta de este momento!</p>`;
-    contentHTML += `<iframe src="${mensaje.videoEmbed}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Video especial para ti"></iframe>`;
-    if (bgMusic && !bgMusic.paused) {
+  if (bgMusic && !bgMusic.paused) {
       bgMusic.pause();
       // Opcional: Proporcionar un botón para reanudar la música de fondo después del video
       contentHTML += `<button id="resumeMusicBtn" class="button small-button">Reanudar Música de Fondo</button>`;
