@@ -626,3 +626,42 @@ const mensajes = {
     pista: ""
   },
 };
+
+// Logros definidos
+const logros = [
+  {
+    id: "primer_paso",
+    codigo_requerido: 1,
+    mensaje: "¡Primer paso desbloqueado! Hay muchos más esperándote.",
+    categoria: "Intro",
+    pista: "Piensa en el principio de todo."
+  },
+  {
+    id: "cinco_secretos",
+    codigo_requerido: 5,
+    mensaje: "¡Cinco secretos revelados! Eres una gran exploradora.",
+    categoria: "General",
+    pista: "Muchos secretos a la vez."
+  },
+  {
+    id: "diez_mensajes",
+    codigo_requerido: 10,
+    mensaje: "¡Diez mensajes descubiertos! Tu curiosidad no tiene límites.",
+    categoria: "General",
+    pista: "Una decena de sorpresas."
+  },
+  {
+    id: "mitad_camino",
+    codigo_requerido: Object.keys(mensajes).length / 2, // Se desbloquea al descubrir la mitad de los códigos
+    mensaje: "¡A mitad del camino! ¡Vas muy bien!",
+    categoria: "Progreso",
+    pista: "Justo en el centro."
+  },
+  {
+    id: "todos_los_secretos",
+    codigo_requerido: Object.keys(mensajes).length, // Se desbloquea al descubrir todos los códigos
+    mensaje: "¡Todos los secretos desbloqueados! ¡Eres increíble!",
+    categoria: "Final",
+    pista: "Lo has descubierto todo."
+  }
+];
