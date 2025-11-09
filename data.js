@@ -115,38 +115,38 @@ const mensajes = {
   "sonora": {
     texto: "<p>Mi amor, cada vez que me hablas de tu casa, me imagino caminando por las calles, sintiendo la brisa que te acaricia y conociendo cada rincón que te ha visto crecer. Siento una necesidad tan profunda de estar allí, de vivir esos momentos contigo, de ver el mundo a través de tus ojos y de compartir contigo el lugar que tanto amas.<br><br>Me muero por conocer el sitio que te forma, por entender las pequeñas cosas que te hacen ser quien eres. Quiero ver el paisaje que te inspira, las personas que te han acompañado y todo lo que te ha moldeado. Porque todo eso, amor, es parte de ti, y yo deseo estar allí, a tu lado, para vivirlo juntos.<br><br>Sé que algún día lo haré, y ese día será tan especial como nuestro amor, porque estaré donde tú estás, y ese será el lugar más bonito del mundo.<br><br>Te amo, siempre esperando ese momento.</p>",
     categoria: "Carta",
-    pista: "Estado de México fundado en 18"
+    pista: "Estado de México fundado en 1824"
   },
   "ciudadobregon": {
-    texto: "<p>No dejo de imaginar el día en que por fin llegue a tu ciudad. Ese primer momento en que mis pies toquen el suelo que tanto he soñado, las calles por las que caminas, el cielo que te cubre cada día. Todo eso que antes solo vivía en mis pensamientos, ahora, tan cerca.<br><br24>Pero más allá de los lugares, lo que más anhelo es verte a ti. Encontrarte entre la gente, con esa sonrisa que me desarma, sentir tus brazos rodeándome como si el mundo entero quedara atrás. Ese abrazo será mi hogar, aunque estemos al aire libre. Y esa ciudad, la tuya, se convertirá en un recuerdo eterno en mi corazón, porque será el escenario de nuestro primer beso.<br><br>Soñar con eso me da fuerzas, porque sé que tarde o temprano, ese día llegará. Y cuando lo haga, no habrá mapa que describa lo feliz que seré. Solo tú, solo yo, y ese rincón del mundo que nos verá encontrarnos por primera vez.<br><br>Te amo con todo lo que soy y con todo lo que aún no hemos vivido.</p>",
+    texto: "<p>No dejo de imaginar el día en que por fin llegue a tu ciudad. Ese primer momento en que mis pies toquen el suelo que tanto he soñado, las calles por las que caminas, el cielo que te cubre cada día. Todo eso que antes solo vivía en mis pensamientos, ahora, tan cerca.<br><br>Pero más allá de los lugares, lo que más anhelo es verte a ti. Encontrarte entre la gente, con esa sonrisa que me desarma, sentir tus brazos rodeándome como si el mundo entero quedara atrás. Ese abrazo será mi hogar, aunque estemos al aire libre. Y esa ciudad, la tuya, se convertirá en un recuerdo eterno en mi corazón, porque será el escenario de nuestro primer beso.<br><br>Soñar con eso me da fuerzas, porque sé que tarde o temprano, ese día llegará. Y cuando lo haga, no habrá mapa que describa lo feliz que seré. Solo tú, solo yo, y ese rincón del mundo que nos verá encontrarnos por primera vez.<br><br>Te amo con todo lo que soy y con todo lo que aún no hemos vivido.</p>",
     categoria: "Carta",
-    pista: ""
+    pista: "Entre el río Yaqui y el desierto, fundada en 1927 en honor a un caudillo."
   },
 "mariachi": {
     texto: "<p>Esta carta es mi voz en la noche, una serenata escrita desde el alma, como esas canciones suaves que se cantan bajo la ventana con el corazón en la mano y los ojos brillando de amor.<br><br>Si pudiera afinar mi voz con lo que siento por ti, te juro que sonaría más dulce que cualquier guitarra, más pura que cualquier verso. Porque amarte es como una melodía que no se olvida, que vuelve una y otra vez, llenando cada rincón de mi alma con su eco.<br><br>Esta noche te escribo como si te cantara, despacito, cerquita del corazón, para decirte que eres mi canción favorita, el ritmo de mis días, la letra que quiero cantar por siempre.<br><br>Te amo con todo lo que vibra en mí, y cada palabra mía es una nota que te busca, una serenata que solo tú sabes escuchar.</p>",
     categoria: "Carta",
-    pista: ""
+    pista: "Así va vestido nuestro hijo de tela cuando quiere cantar con estilo mexicano."
   },
   "stevenuniverse": {
     texto: "<p>Te encontré como estrella fugaz, cruzando mi cielo sin avisar. Y desde entonces, amor brillante, ya nada volvió a ser igual.<br><br>Eres luz que canta sin miedo, mi escudo y mi verdad, como gema que vibra en mi pecho, como hogar que quiero cuidar.<br><br>No necesito magia en mis manos si tú estás para abrazar, porque contigo el mundo es claro y el dolor sabe descansar.<br><br>Tú y yo, dos almas fusionadas, en armonía celestial. No somos perfectos, pero juntos brillamos más allá del mal.</p>",
     videoEmbed: "https://www.youtube.com/embed/9CfY1xxbgSc?si=DheIOXMEQ2Ecvz2q",
     categoria: "Canción",
-    pista: ""
+    pista: "Creación de una artista estadounidense nacida en 1987 y transmitida a partir de 2013 en CN."
   },
   "adriana": {
     texto: "<p>Amor, hay algo que me nace del corazón decirte: tengo muchas ganas de conocer a tu mamá. Quiero mirarla a los ojos y agradecerle por haberte traído al mundo, por haberte criado y por hacer posible que hoy estés en mi vida.<br><br>Siento que al conocerla, conoceré también una parte de ti que aún no he visto, porque todo lo que viene de ti lo quiero abrazar con todo mi cariño. Ojalá pronto llegue ese día.</p>",
     categoria: "Carta",
-    pista: ""
+    pista: "El nombre de la mujer que te dio la vida."
   },
   "carmen": {
     texto: "<p>Eres mío, y sí, lo admito, a veces me dan celos. Porque no quiero que nadie más vea lo que yo veo en ti: mi amor, mi sol, mi todo. Pero tranquilo, son celos bonitos, de esos que nacen del amor más grande.</p>",
     categoria: "Carta",
-    pista: ""
+    pista: "El nombre de tu querida abuelita."
   },
   "johanna": {
     texto: "<p>Quiero que sepas cuánto te agradezco, desde lo más profundo de mi corazón. Gracias por estar ahí, por tomar mi mano cuando más temía avanzar, por sostenerme con tu paciencia y tu ternura cuando los miedos intentaban encerrarme en mí misma.<br><br>Tú no solo me acompañaste, me mostraste que era capaz de enfrentar todo lo que me asustaba. Me ayudaste a ver mi fuerza, incluso cuando yo no la veía. Con tu amor me enseñaste a respirar en medio del caos, a confiar, a soltar, a creer en lo que merezco.<br><br>No sé cómo lo haces, pero contigo hasta mis sombras se sienten seguras. Y eso, amor mío, es algo que jamás olvidaré. Gracias por quedarte, por no soltarme, por amarme incluso cuando yo temía no ser suficiente.<br><br>Hoy camino con más seguridad, y sé que parte de eso es porque tú has estado a mi lado. Y por eso, siempre, gracias.</p>",
     categoria: "Carta",
-    pista: ""
+    pista: "El nombre de tu mejor amiga, esa persona que siempre está a tu lado."
   },
   "furina": {
     texto: "<p>Eres el amor de mi vida, aunque a veces me hagas enojar y quisiera esconderte el celular. Pero luego me sacas una sonrisa y se me olvida todo. Te amo más de lo que mi orgullo quiere admitir.</p>",
