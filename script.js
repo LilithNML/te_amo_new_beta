@@ -415,7 +415,7 @@ function procesarCodigo() {
       localStorage.setItem("failedAttempts", "0");
     } else {
       contenidoDiv.innerHTML = `
-        <h2>Código Incorrecto ❌</h2>
+        <h2>Código Incorrecto</h2>
         <p>Intentos fallidos: ${failedAttempts} de ${MAX_FAILED_ATTEMPTS}</p>
         <p>Sigue intentando, quizás una pista aparezca pronto...</p>
       `;
