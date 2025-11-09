@@ -46,79 +46,79 @@ const mensajes = {
   "raiden": {
     texto: "<p>Si fuera Raiden Shogun,<br>mi poder sería un faro solo para ti.<br>No habría sombra en el mundo que te tocara,<br>ni tormenta capaz de llegar hasta ti<br>sin que yo la disipara con una mirada.</p><p>Mis rayos serían un escudo,<br>cada uno dirigido a mantenerte seguro,<br>y cada golpe de mi espada<br>sería solo para defenderte,<br>para que nunca sientas miedo<br>de lo que está fuera de nuestro alcance.</p><p>Te rodearía con mi calma,<br>con mi fuerza silenciosa<br>que ni el viento podría quebrar,<br>porque a ti te elijo,<br>a ti te guardo,<br>y, como Raiden,<br>mi deber no es solo dominar el trueno,<br>sino ser el refugio donde siempre<br>puedas encontrar paz.</p>",
     categoria: "Carta",
-    pista: ""
+    pista: "Su poder es rayo, su calma es eternidad… y en ella siempre me vi un poco a mí."
   },
 "chester": {
     texto: "<p>Ey tú, mi niño hermoso,<br>¿sabías que tu niña hermosa te ama con locura?<br>Así, sin pausas, sin reglas, sin frenos.<br>Te amo como si fueras mi videojuego favorito:<br>quiero jugar contigo todos los días,<br>explorarte, cuidarte y ganar contigo siempre.</p><p>Eres mi glitch perfecto,<br>mi premio secreto,<br>mi lugar feliz.</p><p>Y no lo olvides:<br>soy tu princesa,<br>y estoy completamente hechizada por ti.</p>",
     categoria: "Carta",
-    pista: ""
+    pista: "Pequeño compañero de patas cortas y corazón gigante, siempre a tu lado."
   },
   "mininahermosa": {
     texto: "<p>No sé si el universo estaba aburrido o inspirado el día que te puso en mi vida,<br>pero bendito sea ese momento.</p><p>Tú, con esa forma tan tuya de existir,<br>te metiste en mi corazón como si siempre hubieras tenido la llave.<br>Y desde entonces no he dejado de amarte.<br>No un poquito.<br>No a ratos.<br>Sino con cada parte de mí.<br>Con locura, con ternura, con deseo,<br>con esa mezcla adictiva de “quiero cuidarte” y “quiero comerte a besos”.</p><p>Eres mi lugar favorito,<br>mi desastre más hermoso,<br>mi calma, mi caos, mi todo.</p><p>Y sí, soy tu niña hermosa,<br>la que piensa en ti a cada hora,<br>la que sonríe con solo imaginar tu voz,<br>la que se derrite por ti aunque finja estar seria,<br>la que te amaría incluso en otra vida,<br>con otro nombre, en otro cuerpo.<br>Porque yo no me enamoré solo de tu piel,<br>sino de tu alma.<br>Y esa,<br>esa no cambia nunca.</p><p>Prepárate, mi amor,<br>porque este corazón late fuerte,<br>y cada latido lleva tu nombre.<br>Y te lo juro,<br>si pudiera darte el mundo,<br>lo envolvería en papel de estrellas<br>y te lo dejaría en la almohada,<br>junto con un beso y un “te amo” tan profundo<br>que te haría temblar el alma.</p><p>Con todo lo que soy,<br><em>Tu niña. Tu Luna. Tuya siempre.</em></p>",
     categoria: "Carta",
-    pista: ""
+    pista: "La frase con la que siempre me llenas de ternura y me haces sonreír."
   },
   "mininohermoso": {
     texto: "<p>Amo tu ternura,<br>esa que se esconde en tus gestos pequeños,<br>en cómo me hablas, en cómo te preocupas,<br>en cómo me haces sentir segura sin decir mucho.</p><p>Eres una de esas personas que no necesita hacer ruido para brillar.<br>Tu forma de ser, tan tú, tan genuina,<br>me desarma, me abraza y me enamora cada día un poquito más.</p><p>Gracias por existir así, tan tú, tan perfecto para mí.</p>",
     categoria: "Carta",
-    pista: ""
+    pista: "Tres palabras que guardan toda mi ternura y te hacen sentir único."
   },
   "yekaterina": {
     texto: "<p>Querido hijo,</p><p>Hoy quiero escribirte como madre, pero también como mujer que ve en ti a alguien muy especial para su hija.<br>Desde que llegaste a su vida, he visto en ella una luz distinta, una paz que solo nace cuando el amor es real y sincero.</p><p>Tal vez no lo diga en voz alta todo el tiempo,<br>pero te tengo un cariño enorme.<br>No solo por lo que eres con ella,<br>sino por lo que eres tú,<br>atento, noble, respetuoso, con un corazón lleno de ternura.</p><p>Gracias por cuidarla, por hacerla reír,<br>por sostenerla en los días buenos y en los no tanto.<br>Gracias por amarla sin condiciones,<br>y por ser ese compañero que toda madre sueña que su hija encuentre.</p><p>Quiero que sepas que aquí tienes a alguien que te aprecia, que te ve,<br>y que te considera parte de la familia.<br>Sigue siendo tú, Haziel,<br>porque tú, tal como eres, ya eres un regalo para nosotras.</p><p>Con cariño,<br><em>Tu suegra (que te quiere más de lo que imaginas).</em></p>",
     categoria: "Sofia",
-    pista: ""
+    pista: "No es el que usa todo el mundo, pero esconde su fuerza y tu admiración por ella."
   },
   "samuel": {
     texto: "<p>Hola, papi,<br>Soy yo, Samuel, tu peluchito favorito.<br>Solo quería recordarte que te amo mucho<br>y que soy el hijo más feliz del mundo<br>porque tengo a los mejores papás del universo.<br>Gracias por abrazarme fuerte por las noches,<br>yo también te cuido mientras duermes.</p><p>Con amor,<br><em>tu hijo peludo, Samuel.</em></p>",
     categoria: "Samuel",
-    pista: ""
+    pista: "Entre abrazos de tela y noches compartidas, su nombre late con nuestro amor."
   },
 "fortnite": {
     texto: "¡Amo jugar contigo!",
     videoEmbed: "https://www.youtube.com/embed/t6YQDSgePxY",
     categoria: "Canción",
-    pista: ""
+    pista: "En un mundo de desafíos y bailes, tus manos me reviven y tu risa guía cada movimiento."
   },
   "dbl": {
     texto: "<p>Tú eres como Vegetto, la fusión perfecta de fuerza y corazón, el guerrero que sonríe en medio del caos y aún así jamás deja de proteger lo que ama.<br><br>Cuando el mundo se pone difícil, te veo enfrentarlo con esa confianza tuya tan única, como si supieras que ninguna oscuridad puede contra tu luz, ni contra el amor que llevas por mí.<br><br>Mi corazón es tu campo de batalla sagrado, y tú, con cada palabra y cada abrazo, lo defiendes como el héroe que eres.<br>No necesitas una Potara para ser increíble, ya eres mi Vegetto, mi guerrero valiente, mi amor invencible.</p>",
     categoria: "Carta",
-    pista: ""
+    pista: "El juego que no dejas de jugar, donde los combates y aventuras nunca terminan."
   },
   "hijas": {
     texto: "<p>Pon tu cabeza en mi hombro, amor, y escucha cómo mi corazón sueña en voz bajita. Sueña con un futuro contigo, con una casa llena de risas suaves y pasos pequeños, con una niña que tenga tus ojos o un niño que herede tu ternura.<br><br>Sueño con verte dormir con un bebé sobre tu pecho, con abrazarte mientras me dices que lo estamos haciendo bien, aunque estemos cansados, aunque el mundo se detenga.<br><br>Porque contigo, la idea de ser madre ya no es solo un sueño, es una promesa que mi alma susurra cada vez que me tomas de la mano.<br><br>Contigo, todo se siente más posible.<br>Contigo, quiero ser hogar.</p>",
     videoEmbed: "https://www.youtube.com/embed/3LSpFmja7Qk",
     categoria: "Canción",
-    pista: ""
+    pista: "Dos pequeños reflejos de nosotros que aún duermen en la espera del tiempo perfecto."
   },
   "3deenero": {
     texto: "<p>Aún me siento como si fuera ayer, el día en que celebré mi primer cumpleaños contigo, ya como mi esposo. Nunca imaginé que ese día sería tan especial, tan lleno de amor y de momentos que atesoro más que cualquier regalo. Era mi cumpleaños, sí, pero la verdadera celebración fue tenerte a ti a mi lado, compartiendo risas, caricias y silencios que decían más que mil palabras. Recuerdo cómo me hablabas, como si quisieras que ese día fuera perfecto, y lo fue, mucho más de lo que pude haber esperado. Tus detalles, tu presencia, tu amor, todo lo hizo tan único. Cada segundo a tu lado fue un regalo que nunca dejaré de agradecer. Gracias por hacer que mi primer cumpleaños contigo fuera una experiencia inolvidable. Ahora, más que nunca, entiendo que no son los años los que cuentan, sino los momentos compartidos, los gestos de amor que llenan el alma. Y contigo, cada día, cada cumpleaños, será siempre el más especial. Te amo, mi amor. Gracias por ser tú, por ser mi compañero, mi amor, mi todo.</p>",
     categoria: "Carta",
-    pista: ""
+    pista: "El día que marcó mi existencia y abrió la puerta a todos nuestros recuerdos."
   },
   "15deabril": {
     texto: "<p>Cada vez que te miro, el mundo se detiene. No importa lo que esté pasando, tu sonrisa y esos ojos tuyos hacen que todo se vea perfecto. Te amo por ser tú, por brillar de una manera que solo tú sabes hacerlo. Siempre me haces sentir especial, solo con ser tú.</p>",
     videoEmbed: "https://www.youtube.com/embed/yc8YRJPxTYE",
     categoria: "Canción",
-    pista: ""
+    pista: "El día en que el mundo recibió tu luz, y desde entonces iluminas mi vida."
   },
   "primernovio": {
     texto: "<p>Hoy quiero dedicarte unas palabras que quizás no siempre te digo, pero que siento profundamente en cada rincón de mi corazón. Tú eres mi primer amor real, el primero con el que entendí lo que significa amar de verdad, lo que es confiar, compartir y construir algo hermoso juntos.<br><br>Antes de ti, amaba con sueños, con esperanza, con ilusión, pero tú llegaste y me enseñaste que el amor no es solo un sentimiento, es un acto diario, una decisión constante, una forma de ser que solo se vive en la realidad. Y eso, mi amor, es lo que más valoro de ti. Tú me has mostrado lo que es un amor real, con sus altos, sus bajos, pero siempre lleno de honestidad, paciencia y ternura.<br><br>Gracias por ser mi primer amor que nunca se desvanece, por ser quien me enseña, quien me cuida, quien me ama con una intensidad que no sabía que podía existir. Gracias por ser tú, por darme lo mejor de ti, por regalarme tu corazón y hacerme sentir tan especial. Eres mi primer amor real, y no puedo evitar sentirme afortunada por tenerte a mi lado.<br><br>Con todo mi amor,<br>Tu niña.</p>",
     videoEmbed: "https://www.youtube.com/embed/NwIdD8PI-_c",
     categoria: "Canción",
-    pista: ""
+    pista: "El único que ha tenido la suerte de ser mi primer… y mi único."
   },
   "kissme": {
     texto: "<p>Aunque todavía no he sentido tus labios sobre los míos, hay algo en la idea de ese beso que me llena el alma. Es curioso cómo puedo extrañar algo que aún no conozco, cómo puedo desear tanto ese instante sin haberlo vivido. Pero lo imagino... lo sueño. Y en mis sueños, tu beso es suave, lento y lleno de promesas.<br><br>Me gusta cómo me haces sentir incluso sin tocarme. Me gusta la forma en que tus palabras acarician mi corazón, la manera en que tu voz me envuelve, cómo logras que me derrita solo con tu atención. Si eso ya me hace temblar, no quiero imaginar lo que sentiré cuando, por fin, estemos frente a frente.<br><br>Ese beso será la suma de todas nuestras esperas, de todas las veces que cerramos los ojos imaginándonos cerca. Y cuando llegue, sé que será perfecto, no porque lo sea en forma, sino porque será nuestro.<br><br>Hasta entonces, seguiré amando cada parte de ti a la distancia, soñando con el momento en que nuestros labios se encuentren por primera vez.</p>",
     categoria: "Carta",
-    pista: ""
+    pista: "Two words that always make me want to get closer to you."
   },
   "sonora": {
     texto: "<p>Mi amor, cada vez que me hablas de tu casa, me imagino caminando por las calles, sintiendo la brisa que te acaricia y conociendo cada rincón que te ha visto crecer. Siento una necesidad tan profunda de estar allí, de vivir esos momentos contigo, de ver el mundo a través de tus ojos y de compartir contigo el lugar que tanto amas.<br><br>Me muero por conocer el sitio que te forma, por entender las pequeñas cosas que te hacen ser quien eres. Quiero ver el paisaje que te inspira, las personas que te han acompañado y todo lo que te ha moldeado. Porque todo eso, amor, es parte de ti, y yo deseo estar allí, a tu lado, para vivirlo juntos.<br><br>Sé que algún día lo haré, y ese día será tan especial como nuestro amor, porque estaré donde tú estás, y ese será el lugar más bonito del mundo.<br><br>Te amo, siempre esperando ese momento.</p>",
     categoria: "Carta",
-    pista: ""
+    pista: "Estado de México fundado en 18"
   },
   "ciudadobregon": {
-    texto: "<p>No dejo de imaginar el día en que por fin llegue a tu ciudad. Ese primer momento en que mis pies toquen el suelo que tanto he soñado, las calles por las que caminas, el cielo que te cubre cada día. Todo eso que antes solo vivía en mis pensamientos, ahora, tan cerca.<br><br>Pero más allá de los lugares, lo que más anhelo es verte a ti. Encontrarte entre la gente, con esa sonrisa que me desarma, sentir tus brazos rodeándome como si el mundo entero quedara atrás. Ese abrazo será mi hogar, aunque estemos al aire libre. Y esa ciudad, la tuya, se convertirá en un recuerdo eterno en mi corazón, porque será el escenario de nuestro primer beso.<br><br>Soñar con eso me da fuerzas, porque sé que tarde o temprano, ese día llegará. Y cuando lo haga, no habrá mapa que describa lo feliz que seré. Solo tú, solo yo, y ese rincón del mundo que nos verá encontrarnos por primera vez.<br><br>Te amo con todo lo que soy y con todo lo que aún no hemos vivido.</p>",
+    texto: "<p>No dejo de imaginar el día en que por fin llegue a tu ciudad. Ese primer momento en que mis pies toquen el suelo que tanto he soñado, las calles por las que caminas, el cielo que te cubre cada día. Todo eso que antes solo vivía en mis pensamientos, ahora, tan cerca.<br><br24>Pero más allá de los lugares, lo que más anhelo es verte a ti. Encontrarte entre la gente, con esa sonrisa que me desarma, sentir tus brazos rodeándome como si el mundo entero quedara atrás. Ese abrazo será mi hogar, aunque estemos al aire libre. Y esa ciudad, la tuya, se convertirá en un recuerdo eterno en mi corazón, porque será el escenario de nuestro primer beso.<br><br>Soñar con eso me da fuerzas, porque sé que tarde o temprano, ese día llegará. Y cuando lo haga, no habrá mapa que describa lo feliz que seré. Solo tú, solo yo, y ese rincón del mundo que nos verá encontrarnos por primera vez.<br><br>Te amo con todo lo que soy y con todo lo que aún no hemos vivido.</p>",
     categoria: "Carta",
     pista: ""
   },
