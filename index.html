@@ -35,15 +35,26 @@
         <i class="fas fa-bars"></i>
       </button>
       <nav id="dropdownMenu" class="dropdown-menu" aria-hidden="true">
-        <a href="#home" onclick="cerrarMenu()">Inicio</a>
-        <a href="#unlocked-section" onclick="toggleUnlockedCodes()" aria-label="Ver códigos desbloqueados">Desbloqueados</a>
-        <button id="showFavoritesBtn" class="dropdown-item" aria-label="Mostrar códigos favoritos">
-          <i class="fas fa-heart"></i> Favoritos
-        </button>
-        <button id="darkModeToggle" class="dropdown-item" aria-label="Alternar modo oscuro/claro">
-          <i class="fas fa-moon"></i> Modo Oscuro
-        </button>
-        </nav>
+  <a href="#home" onclick="cerrarMenu()">
+    <i class="fas fa-home"></i> Inicio
+  </a>
+  <a href="#unlocked-section" onclick="toggleUnlockedCodes()" aria-label="Ver códigos desbloqueados">
+    <i class="fas fa-lock-open"></i> Desbloqueados
+  </a>
+  <button id="showFavoritesBtn" class="dropdown-item" aria-label="Mostrar códigos favoritos">
+    <i class="fas fa-heart"></i> Favoritos
+  </button>
+  <button id="exportProgressBtn" class="dropdown-item" aria-label="Exportar progreso">
+    <i class="fas fa-upload"></i> Exportar progreso
+  </button>
+  <button id="importProgressBtn" class="dropdown-item" aria-label="Importar progreso">
+    <i class="fas fa-download"></i> Importar progreso
+  </button>
+  <input type="file" id="importProgressInput" accept=".json" style="display:none">
+  <button id="darkModeToggle" class="dropdown-item" aria-label="Alternar modo oscuro/claro">
+    <i class="fas fa-moon"></i> Modo oscuro
+  </button>
+      </nav>
     </div>
   </header>
 
