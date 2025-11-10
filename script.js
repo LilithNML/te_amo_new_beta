@@ -407,7 +407,6 @@ function procesarCodigo() {
       contenidoDiv.innerHTML = `
         <h2>💡 Pista para ti:</h2>
         <p>${pistaMostrar}</p>
-        <p class="note">(Intenta pensar qué código podría relacionarse con eso...)</p>
       `;
       contenidoDiv.hidden = false;
 
